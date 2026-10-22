@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เรื่อง สึนามิ - สารานุกรมไทยสำหรับเยาวชน เล่ม 30</title>
+    <!-- Google Fonts: Sarabun & Prompt -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --accent: #0ea5e9;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --border: #e2e8f0;
+            --warning-bg: #fff7ed;
+            --warning-border: #f97316;
+            --footer-bg: #0b0f19;
+            --footer-text: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        h1, h2, h3, h4, .heading-font {
+            font-family: 'Prompt', sans-serif;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(2, 132, 199, 0.85) 100%), 
+                        url('c0cf5400-beac-11ef-aff0-072ce821b6ab.jpg.webp') center/cover no-repeat;
+            color: white;
+            padding: 90px 20px 80px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            backdrop-filter: blur(4px);
+            background: rgba(15, 23, 42, 0.4);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-banner .badge {
+            background-color: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            display: inline-block;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .hero-banner h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-banner p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 300;
+            text-indent: 0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1000px;
+            margin: -30px auto 40px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            border: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 1.45rem;
+            color: var(--primary-dark);
+            margin-bottom: 22px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            text-align: justify;
+            text-indent: 2em;
+            color: #334155;
+            font-size: 1.05rem;
+        }
+
+        .no-indent {
+            text-indent: 0;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid var(--primary);
+            padding: 18px 22px;
+            margin: 22px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* Video Container Style */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* อัตราส่วน 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background-color: #0f172a;
+            margin: 20px 0;
+            border: 1px solid var(--border);
+        }
+
+        .video-container iframe, 
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Dual Image Grid - แก้ไขให้รูปภาพแสดงเต็ม ไม่โดนตัดขอบ */
+        .image-grid-dual {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0 10px;
+        }
+
+        .image-card-item {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f8fafc;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ปรับสไตล์ของ img ให้ภาพพอดีกรอบ ไม่โดนตัดขอบ */
+        .image-card-item img {
+            width: 100%;
+            height: auto;
+            max-height: 280px;
+            object-fit: contain;
+            background-color: #f8fafc;
+            display: block;
+        }
+
+        .image-placeholder-box {
+            width: 100%;
+            height: 220px;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 0.95rem;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .image-caption {
+            padding: 12px 15px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: center;
+            background: white;
+            border-top: 1px solid var(--border);
+            font-weight: 500;
+            margin-top: auto;
+        }
+
+        /* Safety Rules Grid */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .rule-card {
+            background-color: var(--warning-bg);
+            border: 1px solid #fed7aa;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .rule-card h4 {
+            color: var(--warning-border);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .rule-card p {
+            font-size: 0.95rem;
+            text-indent: 0;
+            margin-bottom: 0;
+            color: #7c2d12;
+        }
+
+        /* Map iFrame Container */
+        .map-container {
+            position: relative;
+            padding-bottom: 50%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Modern Dark Footer */
+        .site-footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 50px 20px 30px;
+            font-size: 0.95rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 35px;
+        }
+
+        .footer-col h3 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .footer-col p {
+            color: var(--footer-text);
+            font-size: 0.92rem;
+            text-indent: 0;
+            margin-bottom: 0;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+            font-size: 0.92rem;
+            color: var(--footer-text);
+        }
+
+        .footer-col ul li a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent);
+        }
+
+        .footer-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #38bdf8;
+            text-decoration: none;
+            margin-top: 8px;
+            font-size: 0.92rem;
+        }
+
+        .footer-email:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner h1 { font-size: 1.6rem; }
+            .section-card { padding: 22px; }
+            .container { padding: 0 12px; }
+            .map-container { padding-bottom: 75%; }
+            .footer-container { grid-template-columns: 1fr; gap: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Banner -->
+    <header class="hero-banner">
+        <div class="hero-content">
+            <span class="badge">สารานุกรมไทยสำหรับเยาวชนฯ เล่ม 30</span>
+            <h1>องค์ความรู้เรื่อง สึนามิ</h1>
+            <p>ความหมาย นิยาม ศัพท์ กลไกการเกิด คลื่นน้ำตื้น สัญญาณเตือนภัย และการรับมือ</p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- หมวดที่ 1: ความหมาย นิยาม และที่มาของคำว่า สึนามิ -->
+        <section class="section-card">
+            <h2 class="section-title">🌊 ๑. นิยาม ความหมาย และศัพท์สึนามิ</h2>
+            <p>
+                <strong>สึนามิ (ญี่ปุ่น: 津波, แปลตรงตัว 'คลื่นท่าเรือ', ออกเสียง: [tsɯnami])</strong> เป็นกลุ่มคลื่นน้ำที่เกิดขึ้นจากการย้ายที่ของปริมาตรน้ำก้อนใหญ่ คือ มหาสมุทรหรือทะเลสาบขนาดใหญ่ คำว่า "สึนามิ" ออกเสียงในภาษาญี่ปุ่นต่างกันเล็กน้อยกับการออกเสียงในภาษาอังกฤษว่า /suːnɑːmi/ หรือ /tsuːnɑːmi/ (ทซู นามิ โดยเป็นการควบ ท ซ ในเสียงญี่ปุ่น) ซึ่งมาจากคำว่า <strong>"ท่าเรือ" (津 สึ)</strong> และ <strong>"คลื่น" (波/浪 นามิ)</strong>
+            </p>
+            <p>
+                ในบางครั้งคลื่นสึนามิเคยถูกเรียกว่า <strong>"คลื่นยักษ์" (Tidal wave)</strong> แต่ในช่วงปีหลังคำนี้เสื่อมความนิยมลง โดยเฉพาะในแวดวงวิทยาศาสตร์เนื่องจากสึนามิไม่ได้มีความเกี่ยวข้องกับกระแสน้ำเลย คำว่า "คลื่นยักษ์" ที่เคยนิยมใช้มาจากลักษณะปรากฏทั่วไปซึ่งคือ คลื่นทะเลหนุน (tidal bore) สูงผิดปกติ ทั้งสึนามิและกระแสน้ำต่างก่อให้เกิดคลื่นน้ำพัดเข้าสู่ฝั่ง แต่กรณีของสึนามินั้นการเคลื่อนที่ของน้ำในแผ่นดินยิ่งใหญ่กว่าและกินเวลานานกว่ามาก จึงให้ความรู้สึกของกระแสน้ำสูงอย่างน่าเหลือเชื่อ
+            </p>
+            <p>
+                บรรดานักธรณีวิทยาและนักสมุทรศาสตร์เห็นว่า ชื่อคลื่นตามลักษณะของคลื่นนั้นควรแทนชื่อด้วยศัพท์ทางธรณีวิทยาและสมุทรศาสตร์ โดยปกติสึนามิประกอบด้วยกลุ่มคลื่นที่มีคาบเป็นนาทีหรืออาจมากถึงชั่วโมง เรียกว่า <strong>"คลื่นขบวน" (Wave Train)</strong> อำนาจทำลายล้างของมันสามารถครอบคลุมได้ทั้งแอ่งมหาสมุทร เช่น เหตุการณ์คลื่นสึนามิในมหาสมุทรอินเดีย ค.ศ. 2004 ที่มีผู้เสียชีวิตกว่า 230,000 คน ใน 14 ประเทศ
+            </p>
+            <p>
+                ในเชิงประวัติศาสตร์ <strong>ธูซิดดิดีส (Thucydides)</strong> นักประวัติศาสตร์ชาวกรีก ได้เคยเสนอไว้เมื่อ 426 ปีก่อนคริสตกาลว่า คลื่นสึนามิเกี่ยวข้องกับแผ่นดินไหวใต้ทะเล แม้ปัจจุบันความเข้าใจในธรรมชาติของสึนามิจะพัฒนาขึ้นมาก แต่นักวิทยาศาสตร์ยังคงศึกษาวิจัยเพื่อพยากรณ์เส้นทางของคลื่นและการปฏิสัมพันธ์กับชายฝั่งอย่างแม่นยำ
+            </p>
+        </section>
+
+        <!-- หมวดที่ 2: ลักษณะทางกายภาพและการเกิดคลื่นน้ำตื้น -->
+        <section class="section-card">
+            <h2 class="section-title">📊 ๒. ลักษณะทางกายภาพของสึนามิ</h2>
+            <p>
+                คลื่นสึนามิมีความแตกต่างจากคลื่นน้ำธรรมดามาก สามารถเดินทางได้เป็นระยะทางไกลหลายพันกิโลเมตรโดยไม่สูญเสียพลังงาน และเดินทางในน้ำได้ช้ากว่าการสั่นสะเทือนของแผ่นดินไหวซึ่งเดินทางในพื้นดิน ดังนั้น คลื่นอาจเข้ากระทบฝั่งภายหลังจากผู้คนรู้สึกถึงแผ่นดินไหวเป็นเวลาหลายชั่วโมง
+            </p>
+            <div class="highlight-box">
+                <strong>คุณสมบัติสำคัญของคลื่นสึนามิ:</strong>
+                <ul style="padding-left: 20px; margin-top: 8px;">
+                    <li><strong>คาบคลื่น (Period):</strong> ในทะเลเปิดคลื่นสึนามิมีคาบยาวนานมาก ตั้งแต่ไม่กี่นาทีไปจนถึงเป็นชั่วโมง (ขณะที่คลื่นชายฝั่งทั่วไปที่เกิดจากลมมีคาบประมาณ 10 วินาที)</li>
+                    <li><strong>ความยาวคลื่น (Wavelength):</strong> ยาวถึงหลายร้อยกิโลเมตร (ขณะที่คลื่นลมทั่วไปยาวเพียงประมาณ 150 เมตร)</li>
+                    <li><strong>ความสูงและ ความเร็ว:</strong> ในทะเลเปิดคลื่นมักสูงไม่ถึง 1 เมตร เคลื่อนที่ด้วยความเร็ว 500 ถึง 1,000 กิโลเมตรต่อชั่วโมง ทำให้คนบนเรือไม่รู้สึก แต่เมื่อเข้าสู่ชายฝั่งที่มีความลึกลดลง คลื่นจะชะลอความเร็วและก่อตัวสูงขึ้นจนอาจมากกว่า 30 เมตร</li>
+                </ul>
+            </div>
+            <p>
+                คลื่นสึนามิมีพฤติกรรมเป็น <strong>"คลื่นน้ำตื้น" (Shallow-water Wave)</strong> แม้อยู่นอกทะเลลึก เนื่องจากขนาดของคลื่นที่ยาวมาก ความเร็วของคลื่นน้ำตื้นเท่ากับรากที่สองของผลคูณระหว่างความเร่งจากสนามแรงโน้มถ่วง ($9.8 m/s^2$) และความลึกของน้ำ เช่น ในมหาสมุทรแปซิฟิกความลึก 4,000 เมตร คลื่นจะเคลื่อนที่เร็วประมาณ 720 กม./ชม. ส่วนชายฝั่งความลึก 40 เมตร คลื่นจะช้าลงเหลือประมาณ 72 กม./ชม.
+            </p>
+        </section>
+
+        <!-- หมวดที่ 3: สาเหตุการเกิดคลื่นสึนามิ + วิดีโอ + รูปแผ่นเปลือกโลก 2 รูป -->
+        <section class="section-card">
+            <h2 class="section-title">🌍 ๓. สาเหตุการเกิดคลื่นสึนามิ</h2>
+            <p>
+                คลื่นสึนามิเกิดขึ้นจากการกระทบกระเทือนที่ทำให้น้ำปริมาณมากเกิดการเคลื่อนตัวเพื่อปรับระดับเข้าสู่จุดสมดุล สาเหตุสำคัญ ได้แก่:
+            </p>
+            <ul style="padding-left: 2em; margin-bottom: 16px;">
+                <li><strong>แผ่นดินไหวใต้ทะเล:</strong> การเปลี่ยนรูปร่างอย่างกะทันหันของพื้นทะเลเนื่องจากการขยับตัวของเปลือกโลกบริเวณรอยเลื่อน (Fault) เช่น แผ่นเปลือกโลกอินเดียมุดลงใต้แผ่นยูเรเชีย</li>
+                <li><strong>ดินถล่มใต้น้ำ:</strong> มักเกิดร่วมกับแผ่นดินไหว ทำให้เกิดการเคลื่อนตัวของมวลดินมหาศาล</li>
+                <li><strong>การปะทุของภูเขาไฟและการระเบิดใต้น้ำ:</strong> <i>(การระเบิดนิวเคลียร์ใต้น้ำยังไม่มีผลวิจัยแน่ชัดว่าทำให้เกิดสึนามิได้ เนื่องจากแรงแผ่นดินไหวหรือภูเขาไฟระเบิดใต้น้ำมีพลังงานมหาศาลมากกว่าระเบิดปรมาณูใต้น้ำถึง 10,000 ลูก)</i></li>
+                <li><strong>แผ่นดินขนาดใหญ่ถล่มลงทะเล หรืออุกกาบาตพุ่งชน:</strong> อาจก่อให้เกิด "เมกะสึนามิ" (Megatsunami) ที่สูงร่วมร้อยเมตรได้</li>
+            </ul>
+
+            <!-- บล็อกวิดีโอจำลองการเกิดสึนามิ -->
+            <h4 style="margin-top: 25px; color: var(--primary-dark);">🎬 วิดีโอจำลองการเกิดสึนามิ</h4>
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <span><iframe width="560" height="315" src="https://www.youtube.com/embed/0KNvweXoZ3k?si=k6S8IqjbI6-OD4Qb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></span>
+                    <span style="font-size: 0.85rem; margin-top: 5px; opacity: 0.8;">(ใส่โค้ด &lt;iframe&gt; จาก YouTube หรือ &lt;video&gt; ของคุณที่นี่)</span>
+                </div>
+            </div>
+
+            <!-- กล่องใส่รูปภาพแผ่นเปลือกโลก 2 รูปคู่กัน -->
+            <h4 style="margin-top: 20px; color: var(--primary-dark);">🖼️ ภาพจำลองแนวรอยเลื่อนและการมุดตัวของแผ่นเปลือกโลก</h4>
+            <div class="image-grid-dual">
+                <div class="image-card-item">
+                    <!-- วิธีใส่รูป: ลบแท็ก image-placeholder-box แล้วใส่แท็ก img แบบด้านล่างนี้ได้เลยครับ -->
+                    <div class="image-placeholder-box">
+                        <span><img src="4-9-4.webp" alt=""></span>
+                    </div>
+                    <div class="image-caption">รูปที่ ๑: แสดงภาพจำลองรูปคลื่นสึนามิ
+                    </div>
+                </div>
+
+                <div class="image-card-item">
+                    <div class="image-placeholder-box">
+                        <span><img src="30_12_2557_17_25_38.jpg" alt=""></span>
+                    </div>
+                    <div class="image-caption">รูปที่ ๒: แผนภูมิแสดงการขยับตัวของรอยเลื่อนที่ดันน้ำทะเลจนเกิดคลื่นสึนามิ</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- หมวดที่ 4: สัญญาณเตือนภัยและการป้องกัน -->
+        <section class="section-card">
+            <h2 class="section-title">🚨 ๔. สัญญาณเตือนภัยและมาตรการป้องกัน</h2>
+            <p>
+                <strong>สัญญาณเตือนธรรมชาติ:</strong> ขณะจุดต่ำสุดของคลื่นเคลื่อนเข้าสู่ฝั่ง ระดับน้ำทะเลจะลดลงอย่างรวดเร็วและทำให้ขอบทะเลร่นถอยออกจากชายฝั่ง (หากชายฝั่งลาดชันน้อยอาจร่นถอยไกลถึง 800 เมตร) นอกจากนี้บริเวณพื้นที่ต่ำอาจเกิดน้ำท่วมก่อนที่ยอดคลื่นใหญ่จะเข้าปะทะ และระดับน้ำอาจลดลงก่อนคลื่นลูกถัดไปจะพัดเข้ามา
+            </p>
+            <p>
+                <strong>มาตรการป้องกันและการสร้างกำแพง:</strong> ในต่างประเทศ เช่น ประเทศญี่ปุ่น ได้มีการสร้าง <i>กำแพงกั้นสึนามิ</i> สูงกว่า 4.5 เมตร บริเวณชายฝั่งที่มีประชากรหนาแน่น รวมทั้งสร้างกำแพงกันน้ำท่วมและทางระบายน้ำเพื่อลดแรงกระแทก แม้ในกรณีสึนามิขนาดใหญ่กำแพงอาจไม่สามารถป้องกันการสูญเสียได้ทั้งหมดแต่ช่วยลดความเร็วและความสูงของคลื่นได้
+            </p>
+            <p>
+                <strong>สำหรับประเทศไทย:</strong> หลังเหตุการณ์แผ่นดินไหวและสึนามิ พ.ศ. 2547 กรมอุตุนิยมวิทยาและหน่วยงานภาครัฐได้กำหนดมาตรการป้องกันภัย ติดตั้งระบบเตือนภัยสึนามิ และแนะนำให้ประชาชนอพยพทันทีเมื่อพบสัญญาณเตือนโดยไม่ต้องรอประกาศอย่างเป็นทางการ
+            </p>
+        </section>
+
+        <!-- หมวดที่ 5: วิธีการรับมือเมื่อเกิดสึนามิ -->
+        <section class="section-card">
+            <h2 class="section-title">🛡️ ๕. ข้อปฏิบัติตนและการรับมือสึนามิ</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <h4>1. สังเกตสัญญาณเตือน</h4>
+                    <p>หากเกิดแผ่นดินไหวรุนแรงริมชายฝั่ง หรือเห็นน้ำทะเลลดระดับลงอย่างรวดเร็วผิดปกติ ให้สงสัยทันทีว่าจะเกิดสึนามิ</p>
+                </div>
+                <div class="rule-card">
+                    <h4>2. อพยพขึ้นที่สูงทันที</h4>
+                    <p>รีบออกจากพื้นที่ชายฝั่ง วิ่งขึ้นที่สูง เนินเขา หรือขึ้นชั้นบนของอาคารคอนกรีตเสริมเหล็กที่มั่นคงแข็งแรง</p>
+                </div>
+                <div class="rule-card">
+                    <h4>3. ห้ามลงไปดูคลื่น</h4>
+                    <p>อย่าลงไปดูชายหาดเมื่อน้ำทะเลลดลง เพราะคลื่นลูกแรกและลูกถัดๆ ไปอาจมาถึงอย่างรวดเร็วและรุนแรง</p>
+                </div>
+                <div class="rule-card">
+                    <h4>4. รอฟังประกาศทางการ</h4>
+                    <p>คลื่นสึนามิมาเป็นชุดหลายระลอก (Wave Train) ควรอยู่ในที่ปลอดภัยจนกว่าจะมีประกาศยกเลิกสถานการณ์จากหน่วยงานเตือนภัย</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- หมวดที่ 6: แผนที่จุดเกิดเหตุ -->
+        <section class="section-card">
+            <h2 class="section-title">📍 ๖. แผนที่ศูนย์กลางการเกิดแผ่นดินไหว</h2>
+            <p class="no-indent">พิกัดศูนย์กลางแผ่นดินไหว: ละติจูด ๓.๓ องศาเหนือ, ลองจิจูด ๙๕.๘ องศาตะวันออก (นอกชายฝั่งทางเหนือของเกาะสุมาตรา)</p>
+            <div class="map-container">
+                <iframe 
+                    src="https://maps.google.com/maps?q=3.3000,95.8000&hl=th&z=6&output=embed" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Dark Footer สไตล์เข้ม -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- คอลัมน์ที่ 1: เกี่ยวกับ -->
+            <div class="footer-col">
+                <h3>เกี่ยวกับสารานุกรมไทย</h3>
+                <p>
+                    เว็บไซต์รวบรวมองค์ความรู้จากมูลนิธิโครงการสารานุกรมไทยสำหรับเยาวชนฯ เล่ม 30 เรื่องการเกิดคลื่นสึนามิในทะเลอันดามัน เพื่อการศึกษาและเรียนรู้
+                </p>
+            </div>
+
+            <!-- คอลัมน์ที่ 2: สารบัญเนื้อหา -->
+            <div class="footer-col">
+                <h3>📜 สารบัญเนื้อหาเว็บไซต์</h3>
+                <ul>
+                    <li>1. นิยาม ความหมาย ศัพท์สึนามิ</li>
+                    <li>2. ลักษณะทางกายภาพของสึนามิ</li>
+                    <li>3. สาเหตุการเกิดคลื่นสึนามิ</li>
+                    <li>4. สัญญาณเตือนภัยและการป้องกัน</li>
+                    <li>5. ข้อปฏิบัติตนและการรับมือ</li>
+                    <li>6. แผนที่ศูนย์กลางแผ่นดินไหว</li>
+                </ul>
+            </div>
+
+            <!-- คอลัมน์ที่ 3: แหล่งข้อมูลอ้างอิง -->
+            <div class="footer-col">
+                <h3>แหล่งข้อมูลอ้างอิง</h3>
+                <ul>
+                    <li>• มูลนิธิโครงการสารานุกรมไทยสำหรับเยาวชนฯ</li>
+                    <li>• ศูนย์เตือนภัยพิบัติแห่งชาติ (ศพช.)</li>
+                    <li>• กรมทรัพยากรธรณี</li>
+                    <li>• กรมอุตุนิยมวิทยา</li>
+                </ul>
+            </div>
+
+            <!-- คอลัมน์ที่ 4: จัดทำโดย -->
+            <div class="footer-col">
+                <h3>จัดทำโดย</h3>
+                <p>
+                    นางสาว ตอยยีบะห์ มะประสิทธิ์ คณะมนุษยศาสตร์และสังคมศาสตร์
+                </p>
+                <a href="mailto:toyyeebah1007b@gmail.com" class="footer-email">
+                    ✉️ toyyeebah1007b@gmail.com
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 มูลนิธิโครงการสารานุกรมไทยสำหรับเยาวชนฯ | พัฒนาเว็บไซต์เพื่อการศึกษา</p>
+        </div>
+    </footer>
+
+</body>
+</html>
